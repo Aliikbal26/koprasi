@@ -39,16 +39,19 @@ class ProductController extends Controller
     {
         $data = $request->validate([
             'name'          => "required",
-            'photo'         => "image|",
-            'first-price'   => "required",
-            'last-price'    => "required",
+            'photo'         => "image|mimes:jpg,png,jpeg,gif,svg|max:2048",
+            'first_price'   => "required",
+            'last_price'    => "required",
             'count'         => "required"
         ]);
 
         $photo = $request->file('photo');
-        // if($photo){
-        //     $data['photo'] = time() . $photo.getClientOr
-        // }
+        if($photo){
+            $data['photo'] = time() . "." . $photo->getClientOriginalExtension();
+            $photo->move('file_upload/produk', $data['photo']);
+        }
+        Product::create($data);
+        return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan');
     }
 
     /**

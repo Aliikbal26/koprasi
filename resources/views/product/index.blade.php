@@ -41,13 +41,13 @@
                             <tr>
                                 <td class="align-middle">{{ $loop->iteration }}</td>
                                 <td class="align-middle">{{ $product->name }}</td>
-                                <td class="align-middle">{{ $product->school->name }}</td>
-                                <td class="align-middle">{{ $product->email }}</td>
-                                <td>
+                                <td class="align-middle">{{ $product->first_price }}</td>
+                                <td class="align-middle">{{ $product->last_price }}</td>
+                                <td class="align-middle">
                                     @if($product->photo == null)
-                                    <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle" width="28" data-toggle="tooltip" title="Wildan Ahdian">
-                                    @else
-                                    <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle" width="28" data-toggle="tooltip" title="Wildan Ahdian">
+                                        <img alt="image" src="{{ asset('file_upload/produk/produk.png') }}" class="rounded-circle" width="30" data-toggle="tooltip" title="Wildan Ahdian">
+                                        @else
+                                        <img alt="image" src="{{ asset('file_upload/produk/' . $product->photo) }}" class="" width="30" data-toggle="tooltip" title="Wildan Ahdian">
                                     @endif
                                 </td>
                                 <td class="align-middle">

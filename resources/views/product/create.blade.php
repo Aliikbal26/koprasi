@@ -38,18 +38,18 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="first-price">Harga Beli<span class="text-danger">*</span> <span class="text-secondary">(satuan)</span></label>
-                                    <input type="number" class="form-control @error('first-price') is-invalid @enderror" id="first-price" placeholder="10000" name="first-price" value="{{ old('first-price') }}">
-                                    @error('first-price')
+                                    <label for="first_price">Harga Beli<span class="text-danger">*</span> <span class="text-secondary">(satuan)</span></label>
+                                    <input type="number" class="form-control @error('first_price') is-invalid @enderror" id="first_price" placeholder="10000" name="first_price" value="{{ old('first_price') }}">
+                                    @error('first_price')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                     @enderror
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="last-price">Harga Jual<span class="text-danger">*</span> <span class="text-secondary">(satuan)</span></label>
-                                    <input type="number" class="form-control @error('last-price') is-invalid @enderror" id="last-price" placeholder="12000" name="last-price" value="{{ old('last-price') }}">
-                                    @error('last-price')
+                                    <label for="last_price">Harga Jual<span class="text-danger">*</span> <span class="text-secondary">(satuan)</span></label>
+                                    <input type="number" class="form-control @error('last_price') is-invalid @enderror" id="last_price" placeholder="12000" name="last_price" value="{{ old('last_price') }}">
+                                    @error('last_price')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
