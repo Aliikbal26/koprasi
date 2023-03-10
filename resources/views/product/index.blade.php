@@ -24,9 +24,9 @@
                             <th class="text-center">
                                 #
                             </th>
-                            <th>Nama Pembimbing</th>
-                            <th>Sekolah</th>
-                            <th>Email</th>
+                            <th>Nama Produk</th>
+                            <th>Harga Beli</th>
+                            <th>Harga Jual</th>
                             <th>Photo</th>
                             <th>Action</th>
                             </tr>
