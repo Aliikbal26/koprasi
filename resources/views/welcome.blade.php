@@ -28,6 +28,12 @@
                 <div class="card card-primary">
                 <div class="card-header"><h4>Login</h4></div>
 
+                @error('email')
+                <div class="alert alert-danger mx-2" role="alert">
+                    <strong>Oopps!</strong> Email atau password salah.
+                </div>
+                @enderror
+
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}" class="needs-validation" novalidate="">
                         @csrf

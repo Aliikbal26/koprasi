@@ -17,7 +17,13 @@
                 <li class="{{ request()->is('products-out*') ? 'active' : '' }}"><a class="nav-link" href="index.html">Produk Keluar</a></li>
             </ul>
         </li>
-        <li class="{{ request()->is('history') ? 'active' : '' }}"><a href="" class="nav-link"><i class="fas fa-user"></i><span>Histori</span></a></li>
+        <li class="nav-item dropdown {{ request()->is(['histori-masuk', 'histori-keluar']) ? 'active' : '' }}">
+            <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Histori</span></a>
+            <ul class="dropdown-menu">
+                <li class="{{ request()->is('histori-masuk') ? 'active' : '' }}"><a class="nav-link" href="{{ route('histori-masuk') }}">Produk Masuk</a></li>
+                <li class="{{ request()->is('histori-keluar') ? 'active' : '' }}"><a class="nav-link" href="{{ route('histori-keluar') }}">Produk Keluar</a></li>
+            </ul>
+        </li>
     </ul>
 </aside>
 </div>

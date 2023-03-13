@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\ProductCount;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -37,20 +38,31 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        $data = $request->validate([
+        $request->validate([
             'name'          => "required",
-            'photo'         => "image|mimes:jpg,png,jpeg,gif,svg|max:2048",
+            'photo'         => "image|mimes:jpg,png,jpeg,svg|max:2048",
             'first_price'   => "required",
             'last_price'    => "required",
             'count'         => "required"
         ]);
+
+        $data = [
+            'name'          => $request->name,
+            'first_price'   => $request->first_price,
+            'last_price'    => $request->last_price,
+            'stok'          => $request->count
+        ];
 
         $photo = $request->file('photo');
         if($photo){
             $data['photo'] = time() . "." . $photo->getClientOriginalExtension();
             $photo->move('file_upload/produk', $data['photo']);
         }
-        Product::create($data);
+        $product = Product::create($data);
+        ProductCount::create([
+            'product_id'    => $product->id,
+            'count'         => $request->count
+        ]);
         return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan');
     }
 
@@ -62,7 +74,9 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        return view('product.show', [
+            'product'       => $product
+        ]);
     }
 
     /**
@@ -73,7 +87,9 @@ class ProductController extends Controller
      */
     public function edit(Product $product)
     {
-        //
+        return view('product.edit', [
+            'product'       => $product
+        ]);
     }
 
     /**
@@ -85,7 +101,23 @@ class ProductController extends Controller
      */
     public function update(Request $request, Product $product)
     {
-        //
+        $data = $request->validate([
+            'name'          => 'required',
+            'first_price'   => 'required',
+            'last_price'    => 'required',
+        ]);
+
+        $photo = $request->file('photo');
+        if($photo){
+            if($product->photo){
+                unlink('file_upload/produk/' . $product->photo);
+            }
+            $data['photo'] = time() . '.' . $photo->getClientOriginalExtension();
+            $photo->move('file_upload/produk', $data['photo']);
+        }
+
+        $product->update($data);
+        return redirect()->route('products.index')->with('success', 'Produk berhasil diedit..');
     }
 
     /**
@@ -96,6 +128,8 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        ProductCount::where('product_id', $product->id)->delete();
+        return back()->with('success', 'Produk berhasil dihapus..');
     }
 }
