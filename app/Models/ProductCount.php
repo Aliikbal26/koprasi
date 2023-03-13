@@ -5,13 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Product extends Model
+class ProductCount extends Model
 {
     use HasFactory;
     protected $guarded = [];
 
-    public function product_count()
+    public function product()
     {
-        return $this->hasMany(ProductCount::class);
+        return $this->belongsTo(Product::class);
     }
 }
