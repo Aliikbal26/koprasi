@@ -46,7 +46,7 @@ class ProductController extends Controller
         ]);
 
         $photo = $request->file('photo');
-        if($photo){
+        if ($photo) {
             $data['photo'] = time() . "." . $photo->getClientOriginalExtension();
             $photo->move('file_upload/produk', $data['photo']);
         }
