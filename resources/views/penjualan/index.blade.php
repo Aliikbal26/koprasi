@@ -17,71 +17,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
-                    <div class="row  my-3">
-                        <div class="card-body pb-3">
-                            <div class="col-md-6">
-                                <div class="card p-3 shadow-md">
-                                    <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
-                                        @csrf
-                                        <div class="form-group">
-                                            <label for="name">Nama Produk<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" placeholder="" value="{{ old('name') }}">
-                                            @error('name')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="photo">Photo Produk</label>
-                                            <input type="file" class="form-control @error('photo') is-invalid @enderror" name="photo" id="photo" placeholder="">
-                                            @error('photo')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="first_price">Harga Beli<span class="text-danger">*</span> <span class="text-secondary">(satuan)</span></label>
-                                                <input type="number" class="form-control @error('first_price') is-invalid @enderror" id="first_price" placeholder="10000" name="first_price" value="{{ old('first_price') }}">
-                                                @error('first_price')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="last_price">Harga Jual<span class="text-danger">*</span> <span class="text-secondary">(satuan)</span></label>
-                                                <input type="number" class="form-control @error('last_price') is-invalid @enderror" id="last_price" placeholder="12000" name="last_price" value="{{ old('last_price') }}">
-                                                @error('last_price')
-                                                <div class="invalid-feedback">
-                                                    {{ $message }}
-                                                </div>
-                                                @enderror
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="count">Jumlah Produk<span class="text-danger">*</span></label>
-                                            <input type="number" class="form-control @error('count') is-invalid @enderror" name="count" id="count" placeholder="10" value="{{ old('count') }}">
-                                            @error('count')
-                                            <div class="invalid-feedback">
-                                                {{ $message }}
-                                            </div>
-                                            @enderror
-                                        </div>
-                                        <div class="d-flex justify-content-end" style="gap: 5px">
-                                            <a href="{{ route('products.index') }}" class="btn btn-secondary">Kembali</a>
-                                            <button type="submit" class="btn btn-primary">Tambahkan</button>
-                                        </div>
-                                    </form>
 
-                                </div>
-
-                            </div>
-
-                        </div>
-                    </div>
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <h4>Daftar Produk</h4>
                     </div>
@@ -92,34 +28,50 @@
                                 <thead>
                                     <tr>
                                         <th class="text-center">
-                                            #
+                                            No
                                         </th>
                                         <th>Nama Produk</th>
                                         <th>Harga Beli</th>
                                         <th>Harga Jual</th>
-                                        <th>Photo</th>
+                                        <th>Stock</th>
+                                        <th>Foto</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
                                 <tbody>
 
+                                    @if($products->count() == 0)
                                     <tr>
                                         <td colspan="6" class="text-center">Belum ada produk masuk...</td>
                                     </tr>
-
+                                    @else
+                                    @foreach($products as $product)
                                     <tr>
-                                        <td class="align-middle"></td>
-                                        <td class="align-middle"></td>
-                                        <td class="align-middle"></td>
-                                        <td class="align-middle"></td>
+                                        <td class="align-middle">{{ $loop->iteration }}</td>
+                                        <td class="align-middle">{{ $product->name }}</td>
+                                        <td class="align-middle money text-primary">{{ $product->first_price }}</td>
+                                        <td class="align-middle money text-primary">{{ $product->last_price }}</td>
+                                        <td class="align-middle">{{ $product->stok }} Pcs</td>
                                         <td class="align-middle">
-
-
+                                            @if($product->photo == null)
+                                            <img alt="image" src="{{ asset('file_upload/produk/produk.png') }}" class="rounded-circle" width="30" data-toggle="tooltip" title="Produk">
+                                            @else
+                                            <img alt="image" src="{{ asset('file_upload/produk/' . $product->photo) }}" class="" width="30" data-toggle="tooltip" title="Produk">
+                                            @endif
                                         </td>
                                         <td class="align-middle">
-
+                                            <!-- <a href="{{ route('products.show', $product) }}" class="btn btn-primary m-0 btn-sm lihat-pembimbing"><i class="far fa-eye"></i></a> -->
+                                            <a href="{{ route('products.show', $product) }}" class="btn btn-primary m-0 btn-sm "><i class="fas fa-shopping-cart"></i> Beli</a>
+                                            <!-- <form action="{{ route('products.destroy', $product) }}" method="post" class="d-inline">
+                                                @method('delete')
+                                                @csrf
+                                                <button type="submit" class="d-none"></button>
+                                                <a href="" class="btn btn-sm btn-danger not-link confirm-delete"><i class="fas fa-trash"></i></a>
+                                            </form> -->
                                         </td>
                                     </tr>
+                                    @endforeach
+                                    @endif
 
                                 </tbody>
                             </table>

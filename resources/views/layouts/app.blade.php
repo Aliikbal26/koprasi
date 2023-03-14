@@ -80,7 +80,7 @@
                     Copyright &copy; 2023 <div class="bullet"></div> Design By Sindang Berkah<a href=""></a>
                 </div>
                 <div class="footer-right">
-                    2.3.0
+                    1.0.0
                 </div>
             </footer>
         </div>
@@ -122,6 +122,10 @@
                 currency: 'IDR'
             });
 
+            $(".edit-profile").fireModal({
+                title: "Edit Foto Profile",
+                body: $('.modal-edit-profile')
+            });
             $(".jumlah-product").fireModal({
                 title: "Tambah Stok Produk",
                 body: $('.modal-stok-product')

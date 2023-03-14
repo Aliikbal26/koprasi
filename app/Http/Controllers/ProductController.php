@@ -108,8 +108,8 @@ class ProductController extends Controller
         ]);
 
         $photo = $request->file('photo');
-        if($photo){
-            if($product->photo){
+        if ($photo) {
+            if ($product->photo) {
                 unlink('file_upload/produk/' . $product->photo);
             }
             $data['photo'] = time() . '.' . $photo->getClientOriginalExtension();
