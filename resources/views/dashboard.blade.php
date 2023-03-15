@@ -17,30 +17,93 @@
 
                     <div class="card-body">
                         <div class="row">
-                            <div class="col">
-                                <div class="card">
-                                    <h5>Penjualan</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, id.</p>
+                            <div class="row">
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                    <div class="card card-statistic-1">
+                                        <div class="card-icon bg-primary">
+                                            <i class="far fa-user"></i>
+                                        </div>
+                                        <div class="card-wrap">
+                                            <div class="card-header">
+                                                <h4>Total Admin</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                10
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12">
+                                    <div class="card card-statistic-1">
+                                        <div class="card-icon bg-danger">
+                                            <i class="far fa-newspaper"></i>
+                                        </div>
+                                        <div class="card-wrap">
+                                            <div class="card-header">
+                                                <h4>News</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                42
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                    <div class="card card-statistic-1">
+                                        <div class="card-icon bg-warning">
+                                            <i class="far fa-file"></i>
+                                        </div>
+                                        <div class="card-wrap">
+                                            <div class="card-header">
+                                                <h4>Reports</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                1,201
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-md-6 col-sm-6 col-12">
+                                    <div class="card card-statistic-1">
+                                        <div class="card-icon bg-success">
+                                            <i class="fas fa-circle"></i>
+                                        </div>
+                                        <div class="card-wrap">
+                                            <div class="card-header">
+                                                <h4>Online Users</h4>
+                                            </div>
+                                            <div class="card-body">
+                                                47
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col">
-                                <div class="card p-1">
-                                    <div class="card-header">
+                            <div class="row">
+                                <div class="col">
+                                    <div class="card p-2">
+                                        <h5>Penjualan</h5>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Cupiditate, id.</p>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="card p-2">
+                                        <!-- <div class="card-header"> -->
                                         <h5>Keuntungan</h5>
-                                    </div>
-                                    <div class="card-body">
+                                        <!-- </div> -->
+                                        <!-- <div class="card-body"> -->
                                         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, magnam!</p>
+                                        <!-- </div> -->
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col">
-                                <div class="card">
-                                    <h5>Report</h5>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, quod.</p>
+                                <div class="col">
+                                    <div class="card p-2">
+                                        <h5>Report</h5>
+                                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem, quod.</p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci deserunt quos sapiente harum iusto deleniti dicta neque voluptatem tenetur error quaerat voluptate eaque labore, magni commodi minus tempore, fuga corrupti inventore fugit temporibus culpa libero. Repudiandae numquam voluptas dolor hic accusamus laboriosam tempora ex. Atque, tempore ut! Quas, error asperiores natus minima voluptate alias commodi, repellat totam, labore quisquam ratione ipsam dignissimos accusantium deleniti. Quae excepturi quis sunt assumenda unde, quia magni eligendi animi molestiae sequi hic laborum. Eveniet quos ipsam qui corrupti commodi corporis? Quisquam libero accusamus nostrum, saepe quos doloremque excepturi sequi corporis ea ratione voluptatum commodi ullam iure vitae esse molestias amet illum distinctio ab, pariatur necessitatibus at vel laboriosam? Odio repudiandae tenetur eos soluta perspiciatis eveniet totam a labore rem repellendus cupiditate sunt asperiores, excepturi libero quibusdam harum aliquid sint nisi quo voluptatem eligendi quisquam optio ea eaque! Atque quaerat expedita repellendus vero sit cupiditate voluptates odio dolores, asperiores minima, eveniet necessitatibus, dolorem rem architecto temporibus reprehenderit modi. Perferendis, voluptate alias reprehenderit ut iure magni placeat quibusdam illum sequi sunt voluptates. Quis tenetur possimus aut, quibusdam autem esse voluptates soluta. Culpa est ea placeat optio asperiores at magni vero, itaque id, dolores, suscipit praesentium qui eum.</p>
                     </div>
                 </div>
             </div>

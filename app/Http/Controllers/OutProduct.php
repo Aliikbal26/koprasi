@@ -53,7 +53,7 @@ class OutProduct extends Controller
     public function show(OutProducts $outProducts)
     {
         //
-        $products = Product::find();
+        $products = OutProducts::find();
         return view('penjualan.index', [
             'title' => 'show',
             'products' => $products

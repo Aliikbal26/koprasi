@@ -19,7 +19,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4 mb-3">
-                                <img src="{{ asset('file_upload/produk/' . $product->photo) }}" alt="" class="img-fluid">
+                                @if($product->photo == null)
+                                <img alt="image" src="{{ asset('file_upload/produk/produk.png') }}" class="img-fluid" width="100" title="Produk">
+                                @else
+                                <img alt="image" src="{{ asset('file_upload/produk/' . $product->photo) }}" class="img-fluid" witdh="100" title="Produk">
+                                @endif
+                                <!-- <img src="{{ asset('file_upload/produk/' . $product->photo) }}" alt="" class="img-fluid"> -->
                             </div>
                             <div class="col-md-5">
                                 <table class="w-100">

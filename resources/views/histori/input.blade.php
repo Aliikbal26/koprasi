@@ -14,46 +14,46 @@
                     <div class="card-header">
                         <h4>Histori Produk Masuk</h4>
                     </div>
-                    
+
                     <div class="card-body">
-                    <div class="table-responsive">
-                        <table class="table table-striped table-1" id="table-1">
-                        <thead>
-                            <tr>
-                            <th class="text-center">
-                                #
-                            </th>
-                            <th>Nama Produk</th>
-                            <th>Stok Masuk</th>
-                            <th>Tanggal</th>
-                            <th>Photo</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @if($products->count() == 0)
-                            <tr>
-                                <td colspan="6" class="text-center">Belum ada produk masuk...</td>
-                            </tr>
-                            @else
-                            @foreach($products as $row)
-                            <tr>
-                                <td class="align-middle">{{ $loop->iteration }}</td>
-                                <td class="align-middle">{{ $row->product->name }}</td>
-                                <td class="align-middle">{{ $row->count }}</td>
-                                <td class="align-middle">{{ $row->created_at }}</td>
-                                <td class="align-middle">
-                                    @if($row->product->photo == null)
-                                        <img alt="image" src="{{ asset('file_upload/produk/produk.png') }}" class="rounded-circle" width="30" data-toggle="tooltip" title="Produk">
-                                        @else
-                                        <img alt="image" src="{{ asset('file_upload/produk/' . $row->product->photo) }}" class="" width="30" data-toggle="tooltip" title="Produk">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-1" id="table-1">
+                                <thead>
+                                    <tr>
+                                        <th class="text-center">
+                                            No
+                                        </th>
+                                        <th>Nama Produk</th>
+                                        <th>Stok Masuk</th>
+                                        <th>Tanggal</th>
+                                        <th>Photo</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if($products->count() == 0)
+                                    <tr>
+                                        <td colspan="6" class="text-center">Belum ada produk masuk...</td>
+                                    </tr>
+                                    @else
+                                    @foreach($products as $row)
+                                    <tr>
+                                        <td class="align-middle">{{ $loop->iteration }}</td>
+                                        <td class="align-middle">{{ $row->product->name }}</td>
+                                        <td class="align-middle">{{ $row->count }}</td>
+                                        <td class="align-middle">{{ $row->created_at }}</td>
+                                        <td class="align-middle">
+                                            @if($row->product->photo == null)
+                                            <img alt="image" src="{{ asset('file_upload/produk/produk.png') }}" class="rounded-circle" width="30" data-toggle="tooltip" title="Produk">
+                                            @else
+                                            <img alt="image" src="{{ asset('file_upload/produk/' . $row->product->photo) }}" class="" width="30" data-toggle="tooltip" title="Produk">
+                                            @endif
+                                        </td>
+                                    </tr>
+                                    @endforeach
                                     @endif
-                                </td>
-                            </tr>
-                            @endforeach
-                            @endif
-                        </tbody>
-                        </table>
-                    </div>
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
             </div>

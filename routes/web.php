@@ -31,18 +31,19 @@ Route::middleware(['auth'])->group(function () {
     })->name('dashboard');
 
     // Product
-    Route::resource('products', ProductController::class);
+    Route::resource('products', ProductController::class)->middleware('auth');
     //Route::resource('report', ProductController::class);
-    Route::put('add-stok/{product}', [StokController::class, 'addStok'])->name('addStok');
-    Route::get('histori-masuk', HistoryInputController::class)->name('histori-masuk');
-    Route::get('histori-keluar', HistoryOutputController::class)->name('histori-keluar');
+    Route::put('add-stok/{product}', [StokController::class, 'addStok'])->name('addStok')->middleware('auth');
+    Route::get('histori-masuk', HistoryInputController::class)->name('histori-masuk')->middleware('auth');
+    Route::get('histori-keluar', HistoryOutputController::class)->name('histori-keluar')->middleware('auth');
     // OutProduct
-    Route::resource('report', ReportProductController::class);
-    Route::resource('checkout', OutProduct::class);
+    Route::resource('report', ReportProductController::class)->middleware('auth');
+    Route::resource('checkout', OutProduct::class)->middleware('auth');
     // Route::resource('payment', OutProduct::class);
 
     //User
     Route::resource('profile', UserController::class);
+    Route::resource('edit', UserController::class);
 });
 
 require __DIR__ . '/auth.php';
