@@ -20,7 +20,12 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-4">
-                                <img src="{{$user->foto == null ? 'assets/img/avatar/avatar-4.png' : '$user->foto'}}" class="img-thumbnail text-center" width="50%" alt="">
+                                <!-- @if($user->foto == null)
+                                <img alt="image" src="{{ asset('assets/img/avatar/avatar-4.png') }}" class="rounded-circle" width="30" data-toggle="tooltip" title="Produk">
+                                @else
+                                <img alt="image" src="{{ asset('file_upload/produk/' . $user->foto) }}" class="" width="30" data-toggle="tooltip" title="Produk">
+                                @endif -->
+                                <img src="{{$user->foto == null ? 'assets/img/avatar/avatar-4.png' : 'file_upload/produk/' . $user->foto}}" class="img-thumbnail text-center" width="50%" alt="">
                             </div>
                             <div class="col-md-8 my-2">
                                 <h6>Nama : {{$user->name}}</h6>
@@ -33,9 +38,10 @@
         </div>
     </div>
     <!-- modal edit profile -->
-    <form action="" method="post" class="modal-part modal-edit-profile" id="modal" enctype="multipart/form-data">
-        @method('put')
+    <form action="{{ route('profile.update', $user->id) }}" method="post" class="modal-part modal-edit-profile" id="modal" enctype="multipart/form-data">
         @csrf
+        @method('put')
+
         <div class="form-group">
             <label for="name">Name<span class="text-danger">*</span></label>
             <input type="text" class="form-control " name="name" id="email" placeholder="Ali Ikbal" required>

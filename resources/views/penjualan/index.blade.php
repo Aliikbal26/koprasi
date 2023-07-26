@@ -19,7 +19,7 @@
                 <div class="card">
 
                     <div class="card-header d-flex justify-content-between align-items-center">
-                        <h4>Daftar Produk</h4>
+                        <h4>Daftar Produk Penjualan</h4>
                     </div>
 
                     <div class="card-body">
@@ -61,7 +61,7 @@
                                         </td>
                                         <td class="align-middle">
                                             <!-- <a href="{{ route('products.show', $product) }}" class="btn btn-primary m-0 btn-sm lihat-pembimbing"><i class="far fa-eye"></i></a> -->
-                                            <a href="{{ route('products.show', $product) }}" class="btn btn-primary m-0 btn-sm "><i class="fas fa-shopping-cart"></i> Beli</a>
+                                            <a href="{{ route('payment.show', $product) }}" class="btn btn-primary m-0 btn-sm "><i class="fas fa-shopping-cart"></i> Beli</a>
                                             <!-- <form action="{{ route('products.destroy', $product) }}" method="post" class="d-inline">
                                                 @method('delete')
                                                 @csrf

@@ -120,6 +120,15 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Produk berhasil diedit..');
     }
 
+    public function payment(Product $product)
+    {
+        # code...
+        return view('penjualan.payment', [
+            'title' => 'show',
+            'products' => $product
+        ]);
+    }
+
     /**
      * Remove the specified resource from storage.
      *

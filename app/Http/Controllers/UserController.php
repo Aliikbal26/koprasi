@@ -73,9 +73,38 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
         //
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $foto = $request->file('foto');
+        if ($foto) {
+            // if ($user->foto) {
+            $data['foto'] = time() . '.' . $foto->getClientOriginalExtension();
+            $foto->move('file_upload/produk/', $data['foto']);
+            // unlink('file_upload/produk/' . $user->foto);
+            // }
+        }
+        $user->update($data);
+
+
+
+        // $user->update([
+        //     'name' => $request->input('name'),
+        //     'email' => $request->input('email'),
+        //     'foto' => $request->file('foto') ? $data,
+        //     // 'foto' => $request->file('foto') ? $request->file('foto')->store('foto', 'public') : $user->photo,
+        // ]);
+
+        return redirect()->back()->with('success', 'User updated successfully.');
+
+        // $user = User::find($id);
+        // if ($user) {
+
+
+        //     return redirect()->route('profile.index')->with('success', 'Profile berhasil diedit..');
+        // }
     }
 
     /**

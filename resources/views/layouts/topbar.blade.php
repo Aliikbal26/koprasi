@@ -7,8 +7,8 @@
     <ul class="navbar-nav navbar-right">
         <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
                 {{-- image --}}
-                @if (auth()->user()->image != null)
-                <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
+                @if (auth()->user()->foto != null)
+                <img alt="image" src="{{ asset('file_upload/produk/' . auth()->user()->foto) }}" class="rounded-circle mr-1">
                 @else
                 <img alt="image" src="{{ asset('assets/img/avatar/avatar-1.png') }}" class="rounded-circle mr-1">
                 @endif

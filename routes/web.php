@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group(function () {
 
     // Product
     Route::resource('products', ProductController::class)->middleware('auth');
+    Route::get('payment/{product}',  [ProductController::class, 'payment'])->middleware('auth');
     //Route::resource('report', ProductController::class);
     Route::put('add-stok/{product}', [StokController::class, 'addStok'])->name('addStok')->middleware('auth');
     Route::get('histori-masuk', HistoryInputController::class)->name('histori-masuk')->middleware('auth');
@@ -39,10 +40,11 @@ Route::middleware(['auth'])->group(function () {
     // OutProduct
     Route::resource('report', ReportProductController::class)->middleware('auth');
     Route::resource('checkout', OutProduct::class)->middleware('auth');
-    // Route::resource('payment', OutProduct::class);
+    Route::resource('payment', OutProduct::class)->middleware('auth');
 
     //User
-    Route::resource('profile', UserController::class);
+    Route::put('profile/{user}', [UserController::class, 'update'])->middleware('auth');
+    Route::resource('profile', UserController::class)->middleware('auth');
     Route::resource('edit', UserController::class);
 });
 

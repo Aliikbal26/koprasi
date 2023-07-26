@@ -31,6 +31,9 @@ class OutProduct extends Controller
     public function create()
     {
         //
+        return view('penjualan.payment', [
+            'title' => "Payment",
+        ]);
     }
 
     /**
@@ -42,6 +45,26 @@ class OutProduct extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'product_id' => 'required',
+            'qty' => 'required',
+            'price' => 'required',
+            'total' => 'required',
+        ]);
+        $product = Product::find($request->product_id);
+        $product->qty = $product->qty - $request->qty;
+        $product->save();
+        $out_product = new OutProducts;
+        $out_product->product_id = $request->product_id;
+        $out_product->qty = $request->qty;
+        $out_product->price = $request->price;
+        //            $out_product->total = $request->total;
+        $out_product->save();
+        return view('penjualan.index', [
+            'title' => 'show',
+            //'products' => $products
+        ]);
+        // return redirect()->back()->with('success', 'Data berhasil ditambahkan');
     }
 
     /**
@@ -53,10 +76,10 @@ class OutProduct extends Controller
     public function show(OutProducts $outProducts)
     {
         //
-        $products = OutProducts::find();
-        return view('penjualan.index', [
+        $products = OutProducts::all();
+        return view('penjualan.payment', [
             'title' => 'show',
-            'products' => $products
+            'products' => $outProducts
         ]);
     }
 
@@ -69,9 +92,13 @@ class OutProduct extends Controller
     public function edit(OutProducts $outProducts)
     {
         // //
-        // return view('penjualan.payment', [
-        //     'title' => "Pembayaran"
-        // ]);
+        //$counterValue = 1;
+        // return view('counter', compact('counter'));
+        return view('penjualan.payment', [
+            dd($outProducts),
+            'title' => 'show',
+            'products' => $outProducts
+        ]);
     }
 
     /**
@@ -84,6 +111,9 @@ class OutProduct extends Controller
     public function update(Request $request, OutProducts $outProducts)
     {
         //
+        // return view('penjualan.payment', [
+        //     'title' => "Pembayaran"
+        // ]);
     }
 
     /**
