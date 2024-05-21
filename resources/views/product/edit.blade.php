@@ -60,7 +60,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="count">Stok Produk<span class="text-danger">*</span></label>
-                                <input type="number" class="form-control @error('count') is-invalid @enderror" name="count" id="count" placeholder="10" value="{{ old('count', $product->stok) }}" readonly>
+                                <input type="number" class="form-control @error('count') is-invalid @enderror" name="count" id="count" placeholder="10" value="{{ old('count', $product->stok) }}">
                                 @error('count')
                                 <div class="invalid-feedback">
                                     {{ $message }}

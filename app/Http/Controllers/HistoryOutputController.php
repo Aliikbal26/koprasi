@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OutProducts;
 use App\Models\ProductCount;
 use App\Models\ProductCountOut;
 use Illuminate\Http\Request;
@@ -18,7 +19,8 @@ class HistoryOutputController extends Controller
     {
         //
         return view('histori.output', [
-            'products'  => ProductCountOut::orderBy('id', 'desc')->get()
+            'products'  => OutProducts::orderBy('id', 'desc')->get(),
+            // 'products1'  => ProductCountOut::orderBy('id', 'desc')->get()
         ]);
     }
 }

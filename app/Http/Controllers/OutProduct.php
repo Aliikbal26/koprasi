@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\OutProducts;
 use App\Models\Product;
+use App\Models\ProductCountOut;
 use Illuminate\Http\Request;
 
 class OutProduct extends Controller
@@ -44,27 +45,30 @@ class OutProduct extends Controller
      */
     public function store(Request $request)
     {
-        //
+
         $request->validate([
             'product_id' => 'required',
-            'qty' => 'required',
+            'name' => 'required',
             'price' => 'required',
-            'total' => 'required',
+            'quantity' => 'required',
+            // 'total' => 'required',
         ]);
+
         $product = Product::find($request->product_id);
-        $product->qty = $product->qty - $request->qty;
+        $product->stok = $product->stok - $request->quantity;
         $product->save();
+        ProductCountOut::create([
+            'product_id'    => $product->id,
+            'count'         => $product->stok
+        ]);
         $out_product = new OutProducts;
         $out_product->product_id = $request->product_id;
-        $out_product->qty = $request->qty;
+        $out_product->name = $request->name;
+        $out_product->count = $request->quantity;
         $out_product->price = $request->price;
-        //            $out_product->total = $request->total;
+        //$out_product->total = $request->total;
         $out_product->save();
-        return view('penjualan.index', [
-            'title' => 'show',
-            //'products' => $products
-        ]);
-        // return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        return redirect()->back()->with('success', 'Pembayaran Berhasil');
     }
 
     /**
@@ -83,6 +87,19 @@ class OutProduct extends Controller
         ]);
     }
 
+    public function bayar(OutProducts $outProducts)
+    {
+        //
+        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        // $products = OutProducts::all();
+        // return view('penjualan.payment', [
+        //     'title' => 'show',
+        //     'products' => $outProducts
+        // ]);
+    }
+
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -100,6 +117,7 @@ class OutProduct extends Controller
             'products' => $outProducts
         ]);
     }
+
 
     /**
      * Update the specified resource in storage.

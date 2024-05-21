@@ -26,7 +26,7 @@
                                         <th>Nama Produk</th>
                                         <th>Stok Keluar</th>
                                         <th>Tanggal</th>
-                                        <th>Photo</th>
+                                        <!-- <th>Photo</th> -->
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -38,16 +38,16 @@
                                     @foreach($products as $row)
                                     <tr>
                                         <td class="align-middle">{{ $loop->iteration }}</td>
-                                        <td class="align-middle">{{ $row->product->name }}</td>
+                                        <td class="align-middle">{{ $row->name }}</td>
                                         <td class="align-middle">{{ $row->count }}</td>
                                         <td class="align-middle">{{ $row->created_at }}</td>
-                                        <td class="align-middle">
-                                            @if($row->product->photo == null)
+                                        <!-- <td class="align-middle">
+                                            @if($row->photo == null)
                                             <img alt="image" src="{{ asset('file_upload/produk/produk.png') }}" class="rounded-circle" width="30" data-toggle="tooltip" title="Produk">
                                             @else
                                             <img alt="image" src="{{ asset('file_upload/produk/' . $row->product->photo) }}" class="" width="30" data-toggle="tooltip" title="Produk">
                                             @endif
-                                        </td>
+                                        </td> -->
                                     </tr>
                                     @endforeach
                                     @endif
